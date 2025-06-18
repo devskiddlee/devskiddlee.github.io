@@ -1,0 +1,239 @@
+@font-face {
+    font-family: "fredoka";
+    src: url("fredoka.ttf");
+}
+
+@font-face {
+    font-family: "outfit";
+    src: url("outfit.ttf");
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: "fredoka";
+}
+
+.navbar {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: pink;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.navobj {
+    cursor: pointer;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.parent {
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+    border: none;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+#homepage {
+    left: 0;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#homepage>.title {
+    font-size: 200px;
+    cursor: default;
+    font-family: "outfit";
+    color: #ff62c3;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+    user-select: none;
+    font-weight: 800;
+}
+
+#homepage>.title:hover {
+    font-size: 220px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 1rem #ff62c3);
+}
+
+#aboutme {
+    left: 100%;
+    background-color: #a77b7b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#aboutme>.logo {
+    aspect-ratio: 1;
+    width: 20%;
+    margin-right: 5%;
+    border-radius: 100%;
+}
+
+#aboutme>.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#aboutme>.container>.text {
+    background-color: #ff62c3;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+#aboutme>.container>.progress {
+    background-color: #ff62c3;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    flex-direction: column;
+
+    width: calc(100% - 20px);
+}
+
+#aboutme>.container>.next {
+    background-color: #ff62c3;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    font-size: 40px;
+    cursor: pointer;
+
+    width: calc(100% - 20px);
+}
+
+#aboutme>.container>.progress>.lang {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
+}
+
+#aboutme>.container>.progress>.lang>.name {
+    width: 20%;
+    color: white;
+    font-size: 30px;
+    line-height: 60px;
+    text-align: center;
+}
+
+#aboutme>.container>.progress>.lang>.slider {
+    width: 0%;
+    background-color: pink;
+    height: 50px;
+    border-radius: 25px;
+    line-height: 50px;
+    text-align: right;
+    color: white;
+    padding-right: 10px;
+    transition-duration: 600ms;
+    transition-timing-function: ease-in-out;
+}
+
+#projects {
+    left: 200%;
+    background-color: #8f5454;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#projects>.project {
+    width: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 30px;
+    margin: 10px;
+}
+
+#projects>.project>.title {
+    width: 100%;
+    font-size: 30px;
+    line-height: 40px;
+    height: 40px;
+    color: #525252;
+    font-family: "outfit";
+    font-weight: 700;
+}
+
+#projects>.project>.lang {
+    width: 100%;
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+    color: #525252;
+    margin-bottom: 10px;
+}
+
+#projects>.project>.link {
+    width: 100%;
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+    color: #ff0000;
+    margin-bottom: 10px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+#blog {
+    left: 300%;
+    background-color: #812e2e;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: not-allowed;
+}
+
+#blog>p {
+    color: white;
+    font-size: 70px;
+}
