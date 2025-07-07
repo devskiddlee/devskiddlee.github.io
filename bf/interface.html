@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Brainfuck Interpreter</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="presets" onclick="togglePresets()">+ Presets
+            <div id="hiddenPresets">
+                <div class="preset" onclick="loadPreset('++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.', 0);">Hello World!</div>
+            </div>
+        </div>
+        <div class="title">Brainfuck Interpreter</div>
+        <div class="subtitle">made by skiddlee</div>
+        <div class="control">
+            <div id="run" onclick="reset();interpret();">
+                Run
+            </div>
+            <div>
+                <label>
+                    Delay:
+                    <input type="number" value="100" id="delay" oninput="save();">
+                    ms
+                </label>
+            </div>
+        </div>
+        <textarea placeholder="Your BF code goes here" cols="100" id="code" oninput="document.querySelector('.show').innerHTML = this.value;save();"></textarea>
+        <div class="show"></div>
+        <div class="registers">
+            <div class="register currentRegister">0</div>
+        </div>
+        <div class="output">
+            Here goes the output...<br>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
