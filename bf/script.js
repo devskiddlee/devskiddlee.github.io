@@ -70,6 +70,18 @@ async function interpret() {
                     current_register_as_element().innerHTML = charin;
                 break;
             case "[":
+                if (parseInt(current_register_as_element().innerHTML) == 0) {
+                    let l = 0;
+                    for (var o = i+1; o < code.length; o++) {
+                        if (code[o] == "[")
+                            l++;
+                        if (code[o] == "]" && l == 0) {
+                            i = o;
+                            break;
+                        }else if (code[o] == "]" && l > 0)
+                            l--;
+                    }
+                }
                 break;
             case "]":
                 if (parseInt(current_register_as_element().innerHTML) != 0) {
