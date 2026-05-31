@@ -1,23 +1,107 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <title>@devskiddlee</title>
         <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
-        <div id="hover-gradient"></div>
-        <div class="main">
-            <div class="title">@skiddlee</div>
-            <divider></divider>
-            <a class="project" href="https://github.com/devskiddlee/inverto-v2" title="An external CS2 cheat">inverto</a>
-            <a class="project" href="https://github.com/devskiddlee/sklye" title="A lightweight layout engine">sklye</a>
-            <a class="project" href="https://github.com/devskiddlee/modular" title="An event-driven library for cheats">modular</a>
-            <a class="project" href="./bf" title="An online BrainFuck Interpreter">BrainFuck</a>
-            <divider></divider>
-            <div class="links">
-                <a href="https://github.com/devskiddlee">GitHub</a>
-            </div>
+        <div class="titlecard">
+            <div class="title">SKIDDLEE</div>
+            <div class="subtitle">developer</div>
         </div>
+        <div class="overlay">
+            <div class="scroll">▼</div>
+        </div>
+        <div class="main">
+            <div class="box">
+                <div class="title">Programming Languages</div>
+                <div class="progress" data-value="100">BrainFuck</div>
+                <div class="progress" data-value="90">C++</div>
+                <div class="progress" data-value="80">C</div>
+                <div class="progress" data-value="70">Python</div>
+                <div class="progress" data-value="60">HTML/CSS/JS</div>
+                <div class="progress" data-value="50">Java</div>
+                <div class="progress" data-value="40">C#</div>
+                <div class="progress" data-value="30">Lua</div>
+                <div class="progress" data-value="20">Kotlin</div>
+                <div class="progress" data-value="10">PHP</div>
+                <div class="progress" data-value="0">(Fuck) Rust</div>
+            </div>
+            <div class="box">
+                <div class="title">My Projects</div>
+                <div class="project ongoing">
+                    <div class="state">WIP</div>
+                    <div class="title">butterfly</div>
+                    <div class="description">A 2D game engine utilizing OpenGL</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                    </div>
+                </div>
+                <div class="project ongoing">
+                    <div class="state">WIP</div>
+                    <div class="title">DX2D</div>
+                    <div class="description">A GUI renderer utilizing DirectX11</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="title">inverto</div>
+                    <div class="description">A feature-rich, completely external CS2 cheat</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                        <a href="https://github.com/devskiddlee/inverto-v2" target="_blank">Open on GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="title">modular</div>
+                    <div class="description">A c++ library for modular handling of events made primarly for cheat clients</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                        <a href="https://github.com/devskiddlee/modular" target="_blank">Open on Github</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="title">sklye</div>
+                    <div class="description"><b>SK</b>iddlee's <b>L</b>a<b>Y</b>out <b>E</b>ngine -> A lightweight layout engine</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                        <a href="https://github.com/devskiddlee/sklye" target="_blank">Open on Github</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="title">lyra-reloaded</div>
+                    <div class="description">An update for the lyra addon for the meteor client</div>
+                    <div class="info">
+                        <div class="lang">Java</div>
+                        <a href="https://github.com/devskiddlee/lyra-reloaded" target="_blank">Open on Github</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="title">BrainFuck Interpreter</div>
+                    <div class="description">A local BrainFuck Interpreter running in your browser</div>
+                    <div class="info">
+                        <div class="lang">HTML/CSS/JS</div>
+                        <a href="./bf/" target="_blank">Open</a>
+                    </div>
+                </div>
+                <div class="project delayed">
+                    <div class="state">Archived</div>
+                    <div class="title">skinternal</div>
+                    <div class="description">An internal cheat for CS2 w/ custom injector</div>
+                    <div class="info">
+                        <div class="lang">C++</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="title">About Me</div>
+                Hello, my name is Paul. I am a german developer focusing on low-level programming and building stuff from scratch (without libraries). I love C/C++ and learning as many languages as I can. I started out with PHP (juck) and afterwards moved to Minecraft Plugin development in Java. My use of C++ actually only started about a year ago when rewriting my CS2 cheat inverto from C# to C++ as I needed better performance; so far I love it. I also love JetBrainsMono (the font you're seeing right now), probably from my days in IntelliJ (Java IDE).
+            </div>
+            <a href="https://ko-fi.com/skiddlee" target="_blank">Donate to me on Ko-fi</a>
+        </div>
+        <div class="scrollbar"></div>
     </body>
 
     <script src="script.js"></script>

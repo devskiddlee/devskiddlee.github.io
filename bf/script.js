@@ -27,18 +27,10 @@ function add_register() {
     amount_registers++;
 }
 
-const availableCmds = [">", "<", "+", "-", ".", ",", "[", "]"]
 async function interpret() {
     let start = Date.now();
     let delay = parseInt(document.querySelector("#delay").value);
     let code = document.querySelector("#code").value;
-    for (var i = 0; i < code.length; i++) {
-        if (!availableCmds.includes(code[i]))
-        {
-            alert("Illegal char found at " + i);
-            return;
-        }
-    }
     for (var i = 0; i < code.length; i++) {
         let cmd = code[i];
         highlight_at_index(i);

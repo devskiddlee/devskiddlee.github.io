@@ -1,55 +1,62 @@
-const hoverGradient = document.querySelector("#hover-gradient");
-const gradientDuration = 1000;
+const q = x => { return document.querySelector(x); }
 
-// Utility Functions
-// (rect : DOMRect, px : number, py : number)
-function moveHoverGradient(rect, px, py) {
-    hoverGradient.style.width = rect.width + px * 2;
-    hoverGradient.style.height = rect.height + py * 2;
-    hoverGradient.style.left = rect.x - px;
-    hoverGradient.style.top = rect.y - py;
-}
+function doScrolling(elementY, duration) { 
+    var startingY = window.pageYOffset;
+    var diff = elementY - startingY;
+    var start;
 
-function easeInOut(t) {
-  return t * t * (3 - 2 * t);
-}
+    window.requestAnimationFrame(function step(timestamp) {
+        if (!start) start = timestamp;
+        var time = timestamp - start;
+        var percent = Math.min(time / duration, 1);
+        
+        var eased = percent < 0.5
+            ? 2 * percent * percent
+            : 1 - Math.pow(-2 * percent + 2, 2) / 2;
 
-function piecewiseEase(t) {
-    if (t < 0.5) {
-        const u = t / 0.5;
-        return 0.5 * easeInOut(u);
-    }
+        window.scrollTo(0, startingY + diff * eased);
 
-    const u = (t - 0.5) / 0.5;
-    return 0.5 + 0.5 * easeInOut(u);
-}
-
-function getGradientAngle(duration) {
-    const t = (Date.now() % duration) / duration;
-    return piecewiseEase(t) * 360.0;
-}
-
-// Global Events
-window.addEventListener("resize", (e) => {
-    moveHoverGradient({x: -100, y: -100, width: 0, height: 0}, 0, 0);
-});
-
-setInterval(() => {
-    document.body.style.setProperty("--gradient-rot", `${getGradientAngle(gradientDuration)}deg`);
-}, 0);
-
-// Project List Alpha Gradient
-const projects = document.querySelectorAll(".project");
-projects.forEach((elm, i, _) => {
-    const a = ((projects.length - i - 1) / projects.length) * 0.5 + 0.5;
-    elm.style.color = `rgba(255, 255, 255, ${a})`;
-});
-
-// Link Hover Event
-const links = document.querySelectorAll("a");
-links.forEach((elm, i, _) => {
-    elm.addEventListener("mouseenter", (e) => {
-        const rect = elm.getBoundingClientRect();
-        moveHoverGradient(rect, 15, 5);
+        if (time < duration) {
+            window.requestAnimationFrame(step);
+        }
     });
+}
+
+q(".titlecard>.title").addEventListener("click", (e) => {
+    doScrolling(document.body.clientHeight, 500);
+});
+
+function onResize(e) {
+    // size to width ratio (fontSize / width)
+    const r = 0.1364649789029536;
+    let m = document.body.clientWidth - 200;
+    if (m > 1200) m = 1200;
+    q(".titlecard>.title").style.fontSize = `${m * r}px`;
+    q(".titlecard>.title").style.lineHeight = q(".titlecard>.title").style.fontSize;
+}
+window.addEventListener("resize", onResize);
+onResize(null);
+
+document.addEventListener("scroll", (e) => {
+    document.body.style.setProperty("--scrollPercentage", (window.scrollY / (document.body.scrollHeight - document.body.clientHeight) * 100) + "%");
+});
+
+document.querySelectorAll(".progress").forEach((e, i, _) => {
+    const value = parseFloat(e.getAttribute("data-value")) | 0;
+    const text = document.createElement("div");
+    text.innerText = e.innerText;
+    e.innerText = "";
+    text.className = "text";
+    e.appendChild(text);
+    const slider = document.createElement("div");
+    slider.className = "slider";
+    const color = document.createElement("div");
+    color.className = "color";
+    color.style.width = `${45 * value / 100}vw`;
+    slider.appendChild(color);
+    e.appendChild(slider);
+    const percText = document.createElement("div");
+    percText.innerText = `${value}%`;
+    percText.className = "percText";
+    e.appendChild(percText);
 });

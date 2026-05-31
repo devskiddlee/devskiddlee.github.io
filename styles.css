@@ -1,8 +1,4 @@
-/* Credit: https://www.jetbrains.com/lp/mono/ (I love this font) */
-@font-face {
-    font-family: "JetBrainsMono";
-    src: url("JetBrainsMono.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Climate+Crisis:YEAR@1979&display=swap');
 
 @font-face {
     font-family: "JetBrainsMono";
@@ -10,21 +6,37 @@
     font-style: italic;
 }
 
-:root {
-    /* Global Style Variables */
-    --text-color: #fff;
-    --gradient-rot: 0deg;
-    --gradient-c1: #fff;
-    --gradient-c2: transparent;
-    background-color: #151515;
-    /* ---------------------- */
-
-    overflow: hidden;
+@font-face {
     font-family: "JetBrainsMono";
-    color: var(--text-color);
+    src: url("JetBrainsMono.ttf");
 }
 
-.main {
+@property --scrollPercentage {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0%;
+}
+
+:root {
+    background-color: #18171e;
+    color: #dcc1a7;
+    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    font-family: "JetBrainsMono";
+}
+
+:root::-webkit-scrollbar { 
+    display: none;
+}
+
+.titlecard {
     width: 100%;
     height: 100%;
 
@@ -32,55 +44,230 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+.titlecard > .title {
+    font-size: 120px;
+    line-height: 120px;
+    font-family: "Climate Crisis", sans-serif;
+    transition-duration: 500ms;
+    cursor: pointer;
 }
 
-.title {
-    font-size: 6vh;
-    font-weight: 900;
+.titlecard > .title:hover {
+    transform: scaleY(1.5);
+    margin-bottom: 30px;
+}
+
+.titlecard > .subtitle {
+    font-size: 30px;
+    line-height: 30px;
     font-style: italic;
 }
 
+.overlay {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    pointer-events: none;
+}
+
+@keyframes scrollBounce {
+    0% {
+        margin-bottom: 10px;
+    }
+
+    50% {
+        margin-bottom: 30px;
+    }
+
+    100% {
+        margin-bottom: 10px;
+    }
+}
+
+.overlay>.scroll {
+    animation: scrollBounce 500ms ease-in-out infinite forwards;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.main {
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+.box {
+    width: 60vw;
+    margin-bottom: 100px;
+}
+
+.main {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.scrollbar {
+    position:fixed;
+    width: var(--scrollPercentage);
+    height: 8px;
+    background-color: #c4a78d;
+    pointer-events: none;
+    left: 0;
+    bottom: 0;
+}
+
+.box>.title {
+    font-size: 30px;
+    line-height: 30px;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.progress>.text {
+    text-wrap-mode: nowrap;
+    width: 9vw;
+    text-align: right;
+    padding-right: 1vw;
+}
+
+.progress>.slider {
+    height: 100%;
+    width: 45vw;
+}
+
+.progress>.slider>.color {
+    background-color: #c4a78d;
+    height: 100%;
+    border-radius: 2px;
+    transition-duration: 500ms;
+}
+
+.progress>.percText {
+    width: 5vw;
+    text-align: right;
+}
+
 .project {
-    font-size: 7vh;
-    font-weight: 400;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #9b8470;
+    margin-bottom: 10px;
+}
+
+.project>.title {
+    font-size: 25px;
+    line-height: 25px;
+    width: 100%;
+    border-bottom: 2px solid #9b8470;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.project>.description {
+    font-size: 15px;
+    line-height: 15px;
+    width: 100%;
+    border-bottom: 2px solid #9b8470;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.project>.info {
+    display: flex;
+    flex-direction: row;
+}
+
+.project>.info>.lang {
+    color: #7d96ea;
+    font-weight: 700;
+    margin-right: 10px;
 }
 
 a {
-    font-size: 3.5vh;
-    text-decoration: none;
-    color: var(--text-color);
+    color: #ea7d7f;
 }
 
-divider {
-    border: 1px solid rgb(25, 255, 152);
-    width: 10vw;
-    margin: 30px;
+.project.ongoing {
+    color: #68daa3;
+    border: 2px solid #63bf92;
 }
 
-#hover-gradient {
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: -100;
-    left: -100;
-    pointer-events: none;
+.project.ongoing>.state {
+    font-weight: 800;
+}
 
-    &::before {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        border: solid 4px transparent;
-        border-radius: 1.5vh;
-        animation: 1s linear infinite forwards rotateGradient;
-        background: linear-gradient(var(--gradient-rot), var(--gradient-c1), var(--gradient-c2)) border-box;
-        mask: conic-gradient(red 0 0) padding-box exclude, conic-gradient(red 0 0);
-        content: ''
-    }
+.project.ongoing>.title {
+    font-size: 25px;
+    line-height: 25px;
+    width: 100%;
+    border-bottom: 2px solid #63bf92;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.project.ongoing>.description {
+    font-size: 15px;
+    line-height: 15px;
+    width: 100%;
+    border-bottom: 2px solid #63bf92;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.project.delayed {
+    color: #da6868;
+    border: 2px solid #ac4e4e;
+}
+
+.project.delayed>.state {
+    font-weight: 800;
+}
+
+.project.delayed>.title {
+    font-size: 25px;
+    line-height: 25px;
+    width: 100%;
+    border-bottom: 2px solid #ac4e4e;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.project.delayed>.description {
+    font-size: 15px;
+    line-height: 15px;
+    width: 100%;
+    border-bottom: 2px solid #ac4e4e;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
